@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace mencoForWindows_winui3.DataModels;
+namespace mencoForWindows_winui3.DataModels.UserData;
 
 public class UserAccessibilityDataModel
 {

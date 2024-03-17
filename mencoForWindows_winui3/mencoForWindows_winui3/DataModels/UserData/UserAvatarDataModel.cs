@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace mencoForWindows_winui3.DataModels;
+namespace mencoForWindows_winui3.DataModels.UserData;
 
 public class UserAvatarDataModel
 {
@@ -14,10 +14,7 @@ public class UserAvatarDataModel
     public string small
     {
         get => _small;
-        set
-        {
-            _small = "http://menco.cn" + value.Replace("\\", "");
-        }
+        set => _small = "http://menco.cn" + value.Replace("\\", "");
     }
 
     private string _regular;
@@ -25,9 +22,6 @@ public class UserAvatarDataModel
     public string regular
     {
         get => _regular;
-        set
-        {
-            _regular = "http://menco.cn" + value.Replace("\\", "");
-        }
+        set => _regular = "http://menco.cn" + value.Replace("\\", "");
     }
 }
