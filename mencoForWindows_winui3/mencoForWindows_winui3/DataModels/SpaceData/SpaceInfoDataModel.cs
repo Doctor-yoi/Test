@@ -2,6 +2,8 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 
+using mencoForWindows_winui3.DataModels.UserData;
+
 namespace mencoForWindows_winui3.DataModels.SpaceData
 {
 	public class SpaceInfoDataModel
@@ -128,7 +130,7 @@ namespace mencoForWindows_winui3.DataModels.SpaceData
 		/// 
 		/// </summary>
 		[JsonPropertyName("author")]
-		public SpaceAuthorDataModel Author { get;set; }
+		public UserDataModel Author { get;set; }
 
 		/// <summary>
 		/// 

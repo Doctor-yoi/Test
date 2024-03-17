@@ -1,15 +1,15 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace mencoForWindows_winui3.DataModels.SpaceData
+namespace mencoForWindows_winui3.DataModels.SpaceData.SpacePostData
 {
-	public class UserJoinedSpacesDataModel
+	public class SpacePostDataModel
 	{
 		/// <summary>
 		/// 
 		/// </summary>
 		[JsonPropertyName("results")]
-		public List<SpaceInfoDataModel> Results { get;set; }
+		public List<SpacePostResultDataModel> Results { get;set; }
 
 		/// <summary>
 		/// 

@@ -13,13 +13,9 @@ namespace mencoForWindows_winui3.Service
     {
         private HttpClient _httpClient;
 
-        public LoginService(HttpClient httpClient)
+        public LoginService(HttpClient? httpClient)
         {
             this._httpClient = httpClient;
-        }
-        public LoginService()
-        {
-            this._httpClient = new HttpClient();
         }
 
         
