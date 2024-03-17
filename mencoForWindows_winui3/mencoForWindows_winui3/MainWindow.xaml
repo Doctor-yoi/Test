@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="mencoForWindows_winui3.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <NavigationView IsBackEnabled="True"
+                    BackRequested="NavigationView_BackRequested"
+                    SelectionChanged="NavigationView_SelectionChanged"
+                    IsSettingsVisible="True"
+                    PaneDisplayMode="Left"
+                    IsTitleBarAutoPaddingEnabled="False"
+                    >
+            <NavigationView.PaneHeader>
+                <Image Source="ms-appx:///Images/CompanyIcon.png" Height="30" Width="Auto" HorizontalAlignment="Left" Margin="8,0,0,0"/>
+            </NavigationView.PaneHeader>
+            <Border Margin="5,50,5,5" BorderBrush="{ThemeResource CircleElevationBorderBrush}" BorderThickness="0.8" CornerRadius="6.28" Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}">
+                <Frame x:Name="mainFrame" Margin="12"/>
+            </Border>
+        </NavigationView>
+        <Grid x:Name="AppTitleBar" Grid.Column="1" VerticalAlignment="Top" Margin="48,0,0,0">
+            <StackPanel Orientation="Horizontal" Height="48" Width="Auto">
+                <Image Source="ms-appx:///Images/AppIcon.png" VerticalAlignment="Center" HorizontalAlignment="Left" Height="25"/>
+                <TextBlock Text="门口学习网" VerticalAlignment="Center" Margin="8,0,0,0"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
