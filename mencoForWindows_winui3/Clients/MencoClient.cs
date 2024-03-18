@@ -12,6 +12,7 @@ using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 
+using mencoForWindows_winui3.DataModels.SpaceData.SpacePostData;
 using mencoForWindows_winui3.DataModels.UserData;
 using mencoForWindows_winui3.Exceptions;
 
@@ -95,5 +96,9 @@ public class MencoClient
         return await CommonSendAsync<UserJoinedSpacesDataModel>(request, cancellationToken);
     }
 
-    
+    public async Task<SpacePostDataModel> GetSpacePostDataAsync([NotNull] string userId, [NotNull] string userToken,
+        [NotNull] string spaceId, int? offset = 0,CancellationToken? cancellationToken = null)
+    {
+        throw new NotImplementedException();
+    }
 }
