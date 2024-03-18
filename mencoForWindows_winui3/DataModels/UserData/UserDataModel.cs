@@ -13,10 +13,10 @@ namespace mencoForWindows_winui3.DataModels.UserData;
 public class UserDataModel
 {
     [JsonPropertyName("description")]
-    public string Description;
+    public string Description { get; set; }
 
     [JsonPropertyName("defaltSchool"), AllowNull]
-    public string DefaultSchool;
+    public string DefaultSchool { get; set; }
 
     private string _LastActivity;
     [JsonPropertyName("lastActivity")]
@@ -35,16 +35,16 @@ public class UserDataModel
     }
 
     [JsonPropertyName("_id")]
-    public string UserId;
+    public string UserId { get; set; }
 
     [JsonPropertyName("accountType")]
-    public string AccountType;
+    public string AccountType { get; set; }
 
     [JsonPropertyName("avatar")]
-    public UserAvatarDataModel Avatar;
+    public UserAvatarDataModel Avatar { get; set; }
 
     [JsonPropertyName("token")]
-    public string Token;
+    public string Token { get; set; }
 
     private string _LastLogged;
     [JsonPropertyName("lastLogged")]
@@ -55,10 +55,10 @@ public class UserDataModel
     }
 
     [JsonPropertyName("username")]
-    public string UserName;
+    public string UserName { get; set; }
 
     [JsonPropertyName("fullname")]
-    public string FullName;
+    public string FullName { get; set; }
 
     private string _CreatedAt;
     [JsonPropertyName("createdAt")]
@@ -69,5 +69,5 @@ public class UserDataModel
     }
 
     [JsonPropertyName("accessibility")]
-    public UserAccessibilityDataModel Accessibility;
+    public UserAccessibilityDataModel Accessibility { get; set; }
 }

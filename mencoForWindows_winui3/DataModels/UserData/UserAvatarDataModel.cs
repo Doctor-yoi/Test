@@ -9,19 +9,19 @@ namespace mencoForWindows_winui3.DataModels.UserData;
 
 public class UserAvatarDataModel
 {
-    private string _small;
+    private string _Small;
     [JsonPropertyName("small")]
-    public string small
+    public string Small
     {
-        get => _small;
-        set => _small = "http://menco.cn" + value.Replace("\\", "");
+        get => _Small;
+        set => _Small = "http://menco.cn" + value.Replace("\\", "");
     }
 
-    private string _regular;
+    private string _Regular;
     [JsonPropertyName("regular")]
-    public string regular
+    public string Regular
     {
-        get => _regular;
-        set => _regular = "http://menco.cn" + value.Replace("\\", "");
+        get => _Regular;
+        set => _Regular = "http://menco.cn" + value.Replace("\\", "");
     }
 }

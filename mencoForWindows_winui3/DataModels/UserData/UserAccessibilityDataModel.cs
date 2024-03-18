@@ -10,14 +10,14 @@ namespace mencoForWindows_winui3.DataModels.UserData;
 public class UserAccessibilityDataModel
 {
     [JsonPropertyName("moderatable")]
-    public bool moderatable;
+    public bool Moderatable { get; set; }
 
     [JsonPropertyName("bubblesheetGuideVisible")]
-    public bool bubblesheetGuideVisible;
+    public bool BubblesheetGuideVisible { get; set; }
 
     [JsonPropertyName("dashboardGuideVisible")]
-    public bool dashboardGuideVisible;
+    public bool DashboardGuideVisible { get; set; }
 
     [JsonPropertyName("classroomGuideVisible")]
-    public bool classroomGuideVisible;
+    public bool ClassroomGuideVisible { get; set; }
 }
