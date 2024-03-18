@@ -100,13 +100,13 @@ namespace mencoForWindows_winui3.DataModels.SpaceData.SpacePostData
 		/// 
 		/// </summary>
 		[JsonPropertyName("recipients")]
-		public Recipients Recipients { get;set; }
+		public SpacePostResultRecipientsDataModel Recipients { get;set; }
 
 		/// <summary>
 		/// 
 		/// </summary>
 		[JsonPropertyName("perspective")]
-		public Perspective Perspective { get;set; }
+		public SpacePostResultPerspectiveDataModel Perspective { get;set; }
 
 		/// <summary>
 		/// 

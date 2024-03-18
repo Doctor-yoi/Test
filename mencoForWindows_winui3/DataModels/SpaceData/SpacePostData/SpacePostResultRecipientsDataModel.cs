@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace mencoForWindows_winui3.DataModels.SpaceData.SpacePostData
 {
-	public class Recipients
+	public class SpacePostResultRecipientsDataModel
 	{
 		/// <summary>
 		/// 
