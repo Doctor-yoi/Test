@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace MencoForWindows.Utils
+namespace mencoForWindows_winui3.Utils
 {
     public static class TextUtil
     {

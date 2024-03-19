@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace MencoForWindows.Utils
+namespace mencoForWindows_winui3.Utils
 {
     public class UrlUtil
     {

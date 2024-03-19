@@ -45,7 +45,6 @@ namespace mencoForWindows_winui3.ViewModels
             this.userInfo = new UserInfo("TestId", "TestName", "TestFullName", "TestToken");
         }
 
-        [MTAThread]
         public async void testButton()
         {
             await Task.Delay(2000);
