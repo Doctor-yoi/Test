@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Http;
 
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Http;
 
 namespace mencoForWindows_winui3.Service
 {
@@ -23,6 +25,16 @@ namespace mencoForWindows_winui3.Service
                 _serviceProvider = sc.BuildServiceProvider();
                 _isInitialized = true;
             }
+        }
+
+        private static void ConfigureHttpClient(ServiceCollection sc)
+        {
+            sc.Configure<HttpClientFactoryOptions>(options => {
+                options.HttpMessageHandlerBuilderActions.Add(builder => 
+                    builder.PrimaryHandler = new HttpClientHandler{
+                        AutomaticDecompression = System.Net.DecompressionMethods.All
+                    });
+            });
         }
 
         public static T? GetService<T>()
