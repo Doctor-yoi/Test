@@ -55,13 +55,7 @@ public class MencoClient
         switch (response.StatusCode)
         {
             case HttpStatusCode.OK:
-#if DEBUG
-                var content = await response.Content.ReadAsStringAsync();
-                var responseData = JsonSerializer.Deserialize<T>(content);
-#else
-                var responseData = await response.Content.ReadFromJsonAsync<T>();
-#endif
-                return responseData;
+                return await response.Content.ReadFromJsonAsync<T>();
             case HttpStatusCode.Conflict:
                 Dictionary<string, object> ErspData = await response.Content.ReadFromJsonAsync<Dictionary<string, object>>();
                 JsonArray errorMessageList = ErspData.ContainsKey("LoginId") ? (JsonArray)ErspData["LoginId"] : (JsonArray)ErspData["password"];
