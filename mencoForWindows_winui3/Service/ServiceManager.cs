@@ -7,6 +7,7 @@ using System.Net.Http;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Http;
+using mencoForWindows_winui3.Clients;
 
 namespace mencoForWindows_winui3.Service
 {
@@ -22,6 +23,7 @@ namespace mencoForWindows_winui3.Service
             {
                 var sc = new ServiceCollection();
                 //TODO: 增加service配置
+                ConfigureHttpClient(sc);
                 _serviceProvider = sc.BuildServiceProvider();
                 _isInitialized = true;
             }
@@ -35,6 +37,10 @@ namespace mencoForWindows_winui3.Service
                         AutomaticDecompression = System.Net.DecompressionMethods.All
                     });
             });
+            sc.AddHttpClient();
+            sc.AddHttpClient<MencoClient>()
+                .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler{ AutomaticDecompression = System.Net.DecompressionMethods.All });
+            //TODO: new httpClient
         }
 
         public static T? GetService<T>()
