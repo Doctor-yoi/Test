@@ -97,8 +97,12 @@ public class MencoClient
     }
 
     public async Task<SpacePostDataModel> GetSpacePostDataAsync([NotNull] string userId, [NotNull] string userToken,
-        [NotNull] string spaceId, int? offset = 0,CancellationToken? cancellationToken = null)
+        [NotNull] string spaceId, string? postType = "announcement", int? offset = 0,CancellationToken? cancellationToken = null)
     {
-        throw new NotImplementedException();
+        string reqUrl = $"http://menco.cn/api/spaces/{spaceId}/posts?filter={postType}&offset={offset}";
+        var request = new HttpRequestMessage(HttpMethod.Get, reqUrl);
+        request.Headers.Add(x_menco_user, userId);
+        request.Headers.Add(x_menco_token, userToken);
+        return await CommonSendAsync<SpacePostDataModel>(request, cancellationToken);
     }
 }
