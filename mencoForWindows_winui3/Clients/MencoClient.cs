@@ -11,7 +11,8 @@ using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
-
+using mencoForWindows_winui3.DataModels;
+using mencoForWindows_winui3.DataModels.SpaceData;
 using mencoForWindows_winui3.DataModels.SpaceData.SpacePostData;
 using mencoForWindows_winui3.DataModels.UserData;
 using mencoForWindows_winui3.Exceptions;
@@ -81,22 +82,24 @@ public class MencoClient
         return await CommonSendAsync<UserDataModel>(request, cancellationToken);
     }
 
-    public async Task<UserJoinedSpacesDataModel> GetUserJoinedSpacesDataAsync([NotNull] string userId, [NotNull] string userToken,
+    public async Task<MencoSearchResultWrapper<SpaceInfoDataModel>> GetUserJoinedSpacesDataAsync([NotNull] string userId, [NotNull] string userToken,
         CancellationToken? cancellationToken = null)
     {
         var request = new HttpRequestMessage(HttpMethod.Get, "http://menco.cn/api/account/feed/spaces");
         request.Headers.Add(x_menco_user, userId);
         request.Headers.Add(x_menco_token, userToken);
-        return await CommonSendAsync<UserJoinedSpacesDataModel>(request, cancellationToken);
+        return await CommonSendAsync<MencoSearchResultWrapper<SpaceInfoDataModel>>(request, cancellationToken);
     }
 
-    public async Task<SpacePostDataModel> GetSpacePostDataAsync([NotNull] string userId, [NotNull] string userToken,
+    public async Task<MencoSearchResultWrapper<SpacePostResultDataModel>> GetSpacePostDataAsync([NotNull] string userId, [NotNull] string userToken,
         [NotNull] string spaceId, string? postType = "announcement", int? offset = 0,CancellationToken? cancellationToken = null)
     {
         string reqUrl = $"http://menco.cn/api/spaces/{spaceId}/posts?filter={postType}&offset={offset}";
         var request = new HttpRequestMessage(HttpMethod.Get, reqUrl);
         request.Headers.Add(x_menco_user, userId);
         request.Headers.Add(x_menco_token, userToken);
-        return await CommonSendAsync<SpacePostDataModel>(request, cancellationToken);
+        return await CommonSendAsync<MencoSearchResultWrapper<SpacePostResultDataModel>>(request, cancellationToken);
     }
+
+    
 }

@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace mencoForWindows_winui3.DataModels.SpaceData.SpacePostData
 {
+	[Obsolete("Please use MencoSearchResultWrapper<SpacePostResultDataModel> instead.")]
 	public class SpacePostDataModel
 	{
 		/// <summary>

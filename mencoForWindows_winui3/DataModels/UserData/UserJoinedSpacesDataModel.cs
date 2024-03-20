@@ -9,6 +9,7 @@ using mencoForWindows_winui3.DataModels.SpaceData;
 
 namespace mencoForWindows_winui3.DataModels.UserData;
 
+[Obsolete("Please use MencoSearchResultWrapper<SpaceInfoDataModel> instead.")]
 public class UserJoinedSpacesDataModel
 {
     /// <summary>
