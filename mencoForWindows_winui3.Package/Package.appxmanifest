@@ -18,7 +18,6 @@
   <Properties>
     <DisplayName>mencoForWindows_winui3</DisplayName>
     <PublisherDisplayName>Naganohara Network Service Center(yoimiya0621@naganohara.top)</PublisherDisplayName>
-    <Logo>Images\StoreLogo.png</Logo>
   </Properties>
 
   <Dependencies>
@@ -38,9 +37,7 @@
         DisplayName="门口学习网"
         Description="门口学习网客户端winui3版本。本程序可以解决门口学习网的间歇性无法访问的问题。如可以正常访问门口学习网，请使用门口学习网网页版。"
         BackgroundColor="transparent"
-        Square150x150Logo="Images\Square150x150Logo.png" Square44x44Logo="Images/StoreLogo.png">
-        <uap:DefaultTile Wide310x150Logo="Images\Wide310x150Logo.png" />
-        <uap:SplashScreen Image="Images\SplashScreen.png" />
+        >
         <uap:InitialRotationPreference>
           <uap:Rotation Preference="landscape"/></uap:InitialRotationPreference>
       </uap:VisualElements>
