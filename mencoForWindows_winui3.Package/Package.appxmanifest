@@ -18,7 +18,7 @@
   <Properties>
     <DisplayName>mencoForWindows_winui3</DisplayName>
     <PublisherDisplayName>Naganohara Network Service Center(yoimiya0621@naganohara.top)</PublisherDisplayName>
-		<Logo>null</Logo>
+		<Logo>Images/StoreLogo.png</Logo>
   </Properties>
 
   <Dependencies>
