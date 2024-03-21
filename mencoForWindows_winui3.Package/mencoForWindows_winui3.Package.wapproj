@@ -65,5 +65,8 @@
       <IncludeAssets>build</IncludeAssets>
     </PackageReference>
   </ItemGroup>
+	<ItemGroup>
+		<Content Include="/Images/StoreLogo.png"/>
+	</ItemGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
 </Project>
