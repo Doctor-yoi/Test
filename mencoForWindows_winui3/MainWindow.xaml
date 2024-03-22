@@ -4,7 +4,9 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Grid>
-        <NavigationView IsBackEnabled="True"
+        <NavigationView 
+                    x:Name="RootNavigator"
+                    IsBackEnabled="True"
                     BackRequested="NavigationView_BackRequested"
                     SelectionChanged="NavigationView_SelectionChanged"
                     IsSettingsVisible="True"
@@ -15,8 +17,30 @@
                 <Image Source="ms-appx:///Images/CompanyIcon.png" Height="30" Width="Auto" HorizontalAlignment="Left" Margin="8,0,0,0"/>
             </NavigationView.PaneHeader>
             <Border Margin="5,50,5,5" BorderBrush="{ThemeResource CircleElevationBorderBrush}" BorderThickness="0.8" CornerRadius="6.28" Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}">
-                <Frame x:Name="mainFrame" Margin="12"/>
+                <Frame x:Name="mainFrame" Margin="12,8,12,12"/>
             </Border>
+            <NavigationView.MenuItems>
+                <NavigationViewItem Tag="MainPage" Content="主页">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE80F;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Tag="PostPage" Content="公告">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE7BC;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Tag="DiscussionPage" Content="讨论">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE8BD;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Tag="PersonalNotesPage" Content="个人笔记">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE70B;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+            </NavigationView.MenuItems>
         </NavigationView>
         <Grid x:Name="AppTitleBar" Grid.Column="1" VerticalAlignment="Top" Margin="48,0,0,0">
             <StackPanel Orientation="Horizontal" Height="48" Width="Auto">

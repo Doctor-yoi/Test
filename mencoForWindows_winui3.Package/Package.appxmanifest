@@ -2,28 +2,24 @@
 
 <Package
   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
-  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
   xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
-  xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
-  IgnorableNamespaces="uap rescap uap3">
+  IgnorableNamespaces="uap rescap">
 
   <Identity
-    Name="org.naganohara.mencoDesktop"
+    Name="org.naganohara.mencoForWindows"
     Publisher="CN=Naganohara Network Service Center, O=Naganohara Network Service Center, C=CN"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="87ef2623-8711-44b8-b09e-a84c0737444f" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
-
   <Properties>
-    <DisplayName>mencoForWindows_winui3</DisplayName>
-    <PublisherDisplayName>Naganohara Network Service Center(yoimiya0621@naganohara.top)</PublisherDisplayName>
-		<Logo>Images/StoreLogo.png</Logo>
+    <DisplayName>门口学习网</DisplayName>
+    <PublisherDisplayName>Naganohara Network Service Center</PublisherDisplayName>
+    <Logo>Images\StoreLogo.png</Logo>
   </Properties>
 
   <Dependencies>
-    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.17763.0" MaxVersionTested="10.0.19041.0" />
-    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.17763.0" MaxVersionTested="10.0.19041.0" />
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.14393.0" MaxVersionTested="10.0.14393.0" />
   </Dependencies>
 
   <Resources>
@@ -36,9 +32,12 @@
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
         DisplayName="门口学习网"
-        Description="门口学习网客户端winui3版本。本程序可以解决门口学习网的间歇性无法访问的问题。如可以正常访问门口学习网，请使用门口学习网网页版。"
+        Description="门口学习网客户端 ——基于WinUI3打造"
         BackgroundColor="transparent"
-        >
+        Square150x150Logo="Images\Square150x150Logo.png"
+        Square44x44Logo="Images\Square44x44Logo.png">
+        <uap:DefaultTile Wide310x150Logo="Images\Wide310x150Logo.png" />
+        <uap:SplashScreen Image="Images\SplashScreen.png" />
         <uap:InitialRotationPreference>
           <uap:Rotation Preference="landscape"/></uap:InitialRotationPreference>
       </uap:VisualElements>
@@ -46,10 +45,7 @@
   </Applications>
 
   <Capabilities>
+    <Capability Name="internetClient" />
     <rescap:Capability Name="runFullTrust" />
-    <Capability Name="internetClient"/>
-    <uap3:Capability Name="backgroundMediaPlayback"/>
-    <Capability Name="codeGeneration"/>
-    <Capability Name="privateNetworkClientServer"/>
   </Capabilities>
 </Package>

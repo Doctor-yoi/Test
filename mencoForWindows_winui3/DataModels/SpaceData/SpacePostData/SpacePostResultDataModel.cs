@@ -26,16 +26,11 @@ namespace mencoForWindows_winui3.DataModels.SpaceData.SpacePostData
 		[JsonPropertyName("commentsCount")]
 		public int CommentsCount { get;set; }
 
-		private string _CreatedAt;
 		/// <summary>
 		/// 
 		/// </summary>
 		[JsonPropertyName("createdAt")]
-		public string CreatedAt
-		{
-			get => _CreatedAt;
-			set => _CreatedAt = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1)).AddSeconds(long.Parse(value)).ToString();
-        }
+		public long CreatedAt { get; set; }
 
 		/// <summary>
 		/// 
@@ -61,16 +56,11 @@ namespace mencoForWindows_winui3.DataModels.SpaceData.SpacePostData
 		[JsonPropertyName("type")]
 		public string Type { get;set; }
 
-		private string _UpdatedAt;
 		/// <summary>
 		/// 
 		/// </summary>
 		[JsonPropertyName("updatedAt")]
-		public string UpdatedAt
-		{
-			get => _UpdatedAt;
-			set => _UpdatedAt = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1)).AddSeconds(long.Parse(value)).ToString();
-        }
+		public string UpdatedAt { get; set; }
 
 		/// <summary>
 		/// 

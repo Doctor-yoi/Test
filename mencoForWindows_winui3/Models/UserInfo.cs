@@ -8,19 +8,21 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace mencoForWindows_winui3.Models
 {
-    class UserInfo : ObservableObject
+    public class UserInfo : ObservableObject
     {
-        public UserInfo(string userId,string userName,string userFullName,string userToken)
+        public UserInfo(string userId,string userName,string userFullName,string userToken,string userIconUrl)
         {
             this.userId = userId;
             this.userName = userName;
             this.userFullName = userFullName;
             this.userToken = userToken;
+            this.userIconUrl = userIconUrl;
         }
         private string _userId;
         private string _userName;
         private string _userFullName;
         private string _userToken;
+        private string _userIconUrl;
 
         public string userId
         {
@@ -41,6 +43,11 @@ namespace mencoForWindows_winui3.Models
         {
             get => _userToken;
             set => SetProperty(ref _userToken, value);
+        }
+        public string userIconUrl
+        {
+            get => _userIconUrl;
+            set => SetProperty(ref _userIconUrl, value);
         }
     }
 }

@@ -58,7 +58,7 @@ public class MencoClient
             case HttpStatusCode.OK:
                 return await response.Content.ReadFromJsonAsync<T>();
             case HttpStatusCode.Conflict:
-                Dictionary<string, object> ErspData = await response.Content.ReadFromJsonAsync<Dictionary<string, object>>();
+                Dictionary<string, JsonArray> ErspData = await response.Content.ReadFromJsonAsync<Dictionary<string, JsonArray>>();
                 JsonArray errorMessageList = ErspData.ContainsKey("LoginId") ? (JsonArray)ErspData["LoginId"] : (JsonArray)ErspData["password"];
                 throw new ApiException(409, errorMessageList[0].ToString());
             case HttpStatusCode.InternalServerError:
@@ -66,6 +66,22 @@ public class MencoClient
                 throw new ApiException(500, eMessageData["error"]);
             default:
                 throw new ApiException(int.Parse(response.StatusCode.ToString()), "出现未知错误！请联系开发者");
+        }
+    }
+
+    private async Task<byte[]> CommonSendByteAsync(HttpRequestMessage request, CancellationToken? cancellationToken = null)
+    {
+        request.Headers.Add(Accept, Application_Json);
+        request.Headers.Add(UserAgent, UAContent);
+        request.Headers.Add(x_menco_device, x_menco_device_content);
+        request.Headers.Add(x_menco_version, x_menco_version_content);
+        var response = await _httpClient.SendAsync(request, cancellationToken ?? CancellationToken.None);
+        switch (response.StatusCode)
+        {
+            case HttpStatusCode.OK:
+                return await response.Content.ReadAsByteArrayAsync();
+            default:
+                throw new ApiException(int.Parse(response.StatusCode.ToString()), "内部错误！请联系开发者！");
         }
     }
 
@@ -79,6 +95,8 @@ public class MencoClient
         CancellationToken? cancellationToken = null)
     {
         var request = new HttpRequestMessage(HttpMethod.Post, "http://menco.cn/api/account/login");
+        var obj = new { loginId = loginId, password = password };
+        request.Content = JsonContent.Create(obj);
         return await CommonSendAsync<UserDataModel>(request, cancellationToken);
     }
 
@@ -101,5 +119,11 @@ public class MencoClient
         return await CommonSendAsync<MencoSearchResultWrapper<SpacePostResultDataModel>>(request, cancellationToken);
     }
 
-    
+    public async Task<byte[]> GetUserIconAsync([NotNull] string userIconUrl)
+    {
+        var request = new HttpRequestMessage(HttpMethod.Get, userIconUrl);
+        var result = await CommonSendByteAsync(request);
+        if (result.LongLength == 0) throw new ApiException(10001, "网络请求错误！");
+        return result;
+    }
 }

@@ -56,16 +56,11 @@ namespace mencoForWindows_winui3.DataModels.SpaceData
 		[JsonPropertyName("membersCount"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString | JsonNumberHandling.WriteAsString)]
 		public int MembersCount { get;set; }
 
-        private string _CreatedAt;
 		/// <summary>
 		/// 
 		/// </summary>
         [JsonPropertyName("createdAt")]
-        public string CreatedAt
-        {
-            get => _CreatedAt;
-            set => _CreatedAt = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1)).AddSeconds(long.Parse(value)).ToString();
-        }
+        public long CreatedAt { get; set; }
 
         /// <summary>
         /// 
@@ -85,16 +80,11 @@ namespace mencoForWindows_winui3.DataModels.SpaceData
 		[JsonPropertyName("spaceDefaultSection"), AllowNull]
 		public string SpaceDefaultSection { get;set; }
 
-        private string _UpdatedAt;
 		/// <summary>
 		/// 
 		/// </summary>
         [JsonPropertyName("updatedAt")]
-        public string updatedAt
-        {
-            get => _UpdatedAt;
-            set => _UpdatedAt = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1)).AddSeconds(long.Parse(value)).ToString();
-        }
+        public long updatedAt { get; set; }
 
         /// <summary>
         /// 

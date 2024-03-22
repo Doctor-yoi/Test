@@ -1,5 +1,7 @@
 using System;
 using System.ComponentModel;
+using System.Xml.Linq;
+
 using Windows.Storage;
 
 namespace mencoForWindows_winui3.Helpers
@@ -9,6 +11,15 @@ namespace mencoForWindows_winui3.Helpers
 
         static AppSetting(){
             _appDataContainer = ApplicationData.Current.LocalSettings;
+        }
+
+        public static void SetValue<T>(string key, T value)
+        {
+            try
+            {
+                _appDataContainer.Values[key] = value?.ToString();
+            }
+            catch { }
         }
 
         public static T? GetValue<T>(string key, T? defaultValue = default){

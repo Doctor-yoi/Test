@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
+
+using mencoForWindows_winui3.Exceptions;
+using mencoForWindows_winui3.Helpers;
+using mencoForWindows_winui3.Service;
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -25,23 +30,54 @@ namespace mencoForWindows_winui3
     /// </summary>
     public sealed partial class LoginWindow : Window
     {
+        private LoginService _loginService;
+
         public LoginWindow()
         {
             this.InitializeComponent();
             SetTitleBar(AppTitleBar);
+
+            this._loginService = ServiceManager.GetService<LoginService>();
         }
         private void LoginWindow_CheckBox_IsShowPassword_Change(object sender, RoutedEventArgs e)
         {
             LoginWindow_PasswordBox_Password.PasswordRevealMode = (bool)LoginWindow_CheckBox_IsShowPassword.IsChecked ? PasswordRevealMode.Visible : PasswordRevealMode.Hidden;
         }
 
-        private void LoginWindow_Button_Login_Click(object sender, RoutedEventArgs e)
+        private async void LoginWindow_Button_Login_Click(object sender, RoutedEventArgs e)
         {
-            if(LoginWindow_TextBox_Account.Text == "13916627140")
+            try
             {
-                Window mainWindow = new MainWindow();
+                var userInfo = await _loginService.GetUserInfoAsync(LoginWindow_TextBox_Account.Text, LoginWindow_PasswordBox_Password.Password);
+                GlobalData.userInfo = userInfo;
+                MainWindow mainWindow = new MainWindow();
                 mainWindow.Activate();
                 this.Close();
+            }
+            catch(Exception ex)
+            {
+                if(ex is ApiException)
+                {
+                    ex = (ApiException)ex;
+                    InfoBar errorInfo = new InfoBar();
+                    errorInfo.Title = "错误";
+                    errorInfo.Message = ex.Message;
+                    errorInfo.Severity = InfoBarSeverity.Error;
+                    errorInfo.IsOpen = true;
+                    NotificationContainer.Children.Add(errorInfo);
+                    await Task.Delay(5000);
+                    NotificationContainer.Children.Remove(errorInfo);
+                }
+                else
+                {
+                    InfoBar errorInfo = new InfoBar();
+                    errorInfo.Title = "错误";
+                    errorInfo.Message = "程序出现未预料的错误！请联系开发者：yoimiya0621@naganohara.top";
+                    errorInfo.Severity = InfoBarSeverity.Error;
+                    errorInfo.IsOpen = true;
+                    NotificationContainer.Children.Add(errorInfo);
+                    NotificationContainer.Children.Remove(errorInfo);
+                }
             }
         }
     }

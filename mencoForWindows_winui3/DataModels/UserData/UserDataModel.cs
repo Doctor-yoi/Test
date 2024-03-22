@@ -18,13 +18,8 @@ public class UserDataModel
     [JsonPropertyName("defaltSchool"), AllowNull]
     public string DefaultSchool { get; set; }
 
-    private string _LastActivity;
     [JsonPropertyName("lastActivity")]
-    public string LastActivity
-    {
-        get => _LastActivity;
-        set => _LastActivity = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1)).AddSeconds(long.Parse(value)).ToString();
-    }
+    public long LastActivity { get; set; }
 
     private string _UserCenterLink;
     [JsonPropertyName("link")]
@@ -46,13 +41,8 @@ public class UserDataModel
     [JsonPropertyName("token")]
     public string Token { get; set; }
 
-    private string _LastLogged;
     [JsonPropertyName("lastLogged")]
-    public string LastLogged
-    {
-        get => _LastLogged;
-        set => _LastLogged = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1)).AddSeconds(long.Parse(value)).ToString();
-    }
+    public long LastLogged { get; set; }
 
     [JsonPropertyName("username")]
     public string UserName { get; set; }
@@ -60,13 +50,8 @@ public class UserDataModel
     [JsonPropertyName("fullname")]
     public string FullName { get; set; }
 
-    private string _CreatedAt;
     [JsonPropertyName("createdAt")]
-    public string CreatedAt
-    {
-        get => _CreatedAt;
-        set => _CreatedAt = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1)).AddSeconds(long.Parse(value)).ToString();
-    }
+    public long CreatedAt { get; set; }
 
     [JsonPropertyName("accessibility")]
     public UserAccessibilityDataModel Accessibility { get; set; }

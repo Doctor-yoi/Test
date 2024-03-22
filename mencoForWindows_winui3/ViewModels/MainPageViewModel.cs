@@ -10,12 +10,18 @@ using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.Input;
 
 using mencoForWindows_winui3.Models;
+using mencoForWindows_winui3.Service;
+using mencoForWindows_winui3.Utils;
+
+using Microsoft.UI.Xaml.Media.Imaging;
 
 namespace mencoForWindows_winui3.ViewModels
 {
-    partial class MainPageViewModel : INotifyPropertyChanged
+    public partial class MainPageViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
+        private LoginService _loginService;
 
         private UserInfo _userInfo;
         public UserInfo userInfo
@@ -31,24 +37,40 @@ namespace mencoForWindows_winui3.ViewModels
             }
         }
 
+        private BitmapImage _userIconImage;
+        public BitmapImage userIconImage
+        {
+            get => _userIconImage;
+            set
+            {
+                if (_userIconImage != value)
+                {
+                    _userIconImage = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
         public MainPageViewModel()
         {
-            this._userInfo = new UserInfo("TestId","TestName","TestFullName","TestToken");
+            this._loginService = ServiceManager.GetService<LoginService>();
         }
 
         public void OnPropertyChanged(string name = "") => 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 
-        [RelayCommand]
+        
         public async void Init()
         {
-            this.userInfo = new UserInfo("TestId", "TestName", "TestFullName", "TestToken");
+            this.userInfo = GlobalData.userInfo;
+
+            var userIcon = await _loginService.GetUserIconAsync(userInfo.userIconUrl);
+            this.userIconImage = ImageUtils.ByteArrayToBitmapImage(userIcon);
         }
 
         public async void testButton()
         {
-            await Task.Delay(2000);
-            this.userInfo = new UserInfo("TestId1", "TestName1", "TestFullName1", "TestToken1");
+            
         }
     }
 }

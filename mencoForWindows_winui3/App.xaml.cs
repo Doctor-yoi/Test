@@ -43,13 +43,14 @@ namespace mencoForWindows_winui3
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            if (AppSetting.GetValue<string>("userid") is null)
-            {
+
+            //if (AppSetting.GetValue<string>("userid") is null)
+            //{
                 m_window = new LoginWindow();
                 m_window.Activate();
                 m_window.ExtendsContentIntoTitleBar = true;
                 return;
-            }
+            //}
             
         }
 

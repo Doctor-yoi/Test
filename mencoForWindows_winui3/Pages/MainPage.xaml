@@ -5,21 +5,22 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:mencoForWindows_winui3.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:viewModel="using:mencoForWindows_winui3.ViewModels" 
-    d:DataContext="{d:DesignInstance Type=viewModel:MainPageViewModel}"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:viewmodels="using:mencoForWindows_winui3.ViewModels" 
+    d:DataContext="{d:DesignInstance Type=viewmodels:MainPageViewModel}"
     mc:Ignorable="d">
     <Page.DataContext>
-        <viewModel:MainPageViewModel x:Name="vm"/>
+        <viewmodels:MainPageViewModel x:Name="vm"/>
     </Page.DataContext>
-    
     <Grid>
         <StackPanel>
-            <TextBlock Text="{Binding userInfo.userName}"/>
-            <TextBlock Text="{Binding userInfo.userFullName}"/>
-            <TextBlock Text="{Binding userInfo.userId}"/>
-            <TextBlock Text="{Binding userInfo.userToken}"/>
-            <Button Content="test" Click="Button_Click"/>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                <Image x:Name="UserIcon" Height="50" Width="50" VerticalAlignment="Center" Source="{Binding userIconImage}"/>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                    <TextBlock x:Name="UserName" Text="{Binding userInfo.userFullName}" FontSize="25" Margin="12,0,0,5"/>
+                    <TextBlock x:Name="UserFullName" Text="{Binding userInfo.userName}" FontSize="15" Margin="12,0,0,0"/>
+                </StackPanel>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Page>

@@ -11,14 +11,14 @@
     <Grid>
         <StackPanel x:Name="LoginWindow_StackPanel_LoginForm" Height="Auto" VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBox x:Name="LoginWindow_TextBox_Account" Header="账号" PlaceholderText="手机号" 
-                     AcceptsReturn="False" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                     AcceptsReturn="False" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="150" Width="Auto"/>
             <StackPanel x:Name="LoginWindow_StackPanel_Password" 
-                        Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
                 <PasswordBox x:Name="LoginWindow_PasswordBox_Password" Header="密码" 
-                             VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                             VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="150" Width="Auto"/>
                 <CheckBox x:Name="LoginWindow_CheckBox_IsShowPassword" Content="显示密码" IsChecked="False" 
                           Checked="LoginWindow_CheckBox_IsShowPassword_Change" Unchecked="LoginWindow_CheckBox_IsShowPassword_Change" 
-                          VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                          VerticalAlignment="Center" HorizontalAlignment="Center" />
             </StackPanel>
             <Button x:Name="LoginWindow_Button_Login" Content="登录" 
                     VerticalAlignment="Center" HorizontalAlignment="Center"
@@ -30,5 +30,15 @@
                 <TextBlock Text="门口学习网" VerticalAlignment="Center" Margin="8,0,0,0"/>
             </StackPanel>
         </Grid>
+        <StackPanel x:Name="NotificationContainer"
+                    MaxWidth="600"
+                    Margin="24,72,24,72"
+                    VerticalAlignment="Bottom">
+            <StackPanel.Transitions>
+                <TransitionCollection>
+                    <AddDeleteThemeTransition />
+                </TransitionCollection>
+            </StackPanel.Transitions>
+        </StackPanel>
     </Grid>
 </Window>

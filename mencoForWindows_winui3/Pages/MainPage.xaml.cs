@@ -1,12 +1,16 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 
 using CommunityToolkit.Mvvm.ComponentModel;
 
 using mencoForWindows_winui3.Models;
+using mencoForWindows_winui3.Service;
+using mencoForWindows_winui3.Utils;
 using mencoForWindows_winui3.ViewModels;
 
 using Microsoft.UI.Xaml;
@@ -28,17 +32,18 @@ namespace mencoForWindows_winui3.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    [INotifyPropertyChanged]
     public sealed partial class MainPage : Page
     {
-        
-        private UserInfo _userInfo;
+        private LoginService _loginService;
 
         public MainPage()
         {
+            this._loginService = ServiceManager.GetService<LoginService>();
             this.InitializeComponent();
-            Loaded += (_, _) => vm.Init();
+            vm.Init();
         }
+
+        
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
