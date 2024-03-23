@@ -11,18 +11,25 @@
     <Grid>
         <StackPanel x:Name="LoginWindow_StackPanel_LoginForm" Height="Auto" VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBox x:Name="LoginWindow_TextBox_Account" Header="账号" PlaceholderText="手机号" 
-                     AcceptsReturn="False" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="150" Width="Auto"/>
+                     AcceptsReturn="False" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" Width="350"/>
             <StackPanel x:Name="LoginWindow_StackPanel_Password" 
                         Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
                 <PasswordBox x:Name="LoginWindow_PasswordBox_Password" Header="密码" 
-                             VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="150" Width="Auto"/>
+                             VerticalAlignment="Center" HorizontalAlignment="Center" Width="350"/>
+            </StackPanel>
+            <StackPanel x:Name="LocinWindow_StackPanel_LoginSettings" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
                 <CheckBox x:Name="LoginWindow_CheckBox_IsShowPassword" Content="显示密码" IsChecked="False" 
                           Checked="LoginWindow_CheckBox_IsShowPassword_Change" Unchecked="LoginWindow_CheckBox_IsShowPassword_Change" 
-                          VerticalAlignment="Center" HorizontalAlignment="Center" />
-            </StackPanel>
-            <Button x:Name="LoginWindow_Button_Login" Content="登录" 
+                          VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0" Width="Auto"/>
+                <Button x:Name="LoginWindow_Button_Login" Content="登录" 
                     VerticalAlignment="Center" HorizontalAlignment="Center"
-                    Click="LoginWindow_Button_Login_Click"/>
+                    Click="LoginWindow_Button_Login_Click" Width="150"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel x:Name="LoginWindow_StackPanel_DebugSettings" Height="Auto" Width="Auto" 
+                    VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="20">
+            <TextBlock Text="调试菜单" FontSize="25"/>
+            <CheckBox x:Name="DebugMenu_IsStoreInputText" Content="是否存储登录信息" IsChecked="True"/>
         </StackPanel>
         <Grid x:Name="AppTitleBar" Grid.Column="1" VerticalAlignment="Top" Margin="10,0,0,0">
             <StackPanel Orientation="Horizontal" Height="48" Width="Auto">

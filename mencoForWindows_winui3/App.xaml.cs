@@ -4,6 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using mencoForWindows_winui3.Helpers;
+using mencoForWindows_winui3.Models;
+using mencoForWindows_winui3.Service;
+
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -28,12 +31,19 @@ namespace mencoForWindows_winui3
     /// </summary>
     public partial class App : Application
     {
+        private LoginService _loginService;
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
         public App()
         {
+#if DEBUG
+            AppSetting.SetValue<string>("loginId", null);
+            AppSetting.SetValue<string>("password", null);
+#endif
+            _loginService = ServiceManager.GetService<LoginService>();
             this.InitializeComponent();
         }
 
@@ -41,19 +51,23 @@ namespace mencoForWindows_winui3
         /// Invoked when the application is launched.
         /// </summary>
         /// <param name="args">Details about the launch request and process.</param>
-        protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
+        protected override async void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-
-            //if (AppSetting.GetValue<string>("userid") is null)
-            //{
+            AppSetting.TryGetValue("loginId", out string loginId, null);
+            AppSetting.TryGetValue("password", out string password, null);
+            if(loginId is null || password is null)
+            {
                 m_window = new LoginWindow();
                 m_window.Activate();
                 m_window.ExtendsContentIntoTitleBar = true;
                 return;
-            //}
-            
+            }
+            var userInfo = await _loginService.GetUserInfoAsync(loginId, password);
+            GlobalData.userInfo = userInfo;
+            m_window = new MainWindow();
+            m_window.Activate();
+            m_window.ExtendsContentIntoTitleBar = true;
         }
-
         private Window m_window;
     }
 }

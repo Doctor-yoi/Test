@@ -27,7 +27,7 @@ namespace mencoForWindows_winui3.Service
 
         public async Task<byte[]> GetUserIconAsync(string userIconUrl)
         {
-            return await _mencoClient.GetUserIconAsync(userIconUrl);
+            return await _mencoClient.GetBytesImageAsync(userIconUrl);
         }
     }
 }

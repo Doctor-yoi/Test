@@ -13,6 +13,12 @@ namespace mencoForWindows_winui3.Helpers
             _appDataContainer = ApplicationData.Current.LocalSettings;
         }
 
+        [Description("only for test")]
+        public static bool ContainsKey(string key)
+        {
+            return _appDataContainer.Values.ContainsKey(key);
+        }
+
         public static void SetValue<T>(string key, T value)
         {
             try

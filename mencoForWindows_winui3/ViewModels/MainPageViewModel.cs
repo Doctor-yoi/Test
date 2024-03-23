@@ -22,6 +22,7 @@ namespace mencoForWindows_winui3.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
 
         private LoginService _loginService;
+        private ImageService _imageService;
 
         private UserInfo _userInfo;
         public UserInfo userInfo
@@ -54,6 +55,7 @@ namespace mencoForWindows_winui3.ViewModels
         public MainPageViewModel()
         {
             this._loginService = ServiceManager.GetService<LoginService>();
+            this._imageService = ServiceManager.GetService<ImageService>();
         }
 
         public void OnPropertyChanged(string name = "") => 
@@ -63,9 +65,7 @@ namespace mencoForWindows_winui3.ViewModels
         public async void Init()
         {
             this.userInfo = GlobalData.userInfo;
-
-            var userIcon = await _loginService.GetUserIconAsync(userInfo.userIconUrl);
-            this.userIconImage = ImageUtils.ByteArrayToBitmapImage(userIcon);
+            this.userIconImage = await _imageService.GetImageAsync(userInfo.userIconUrl);
         }
 
         public async void testButton()

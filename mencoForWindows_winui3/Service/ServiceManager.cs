@@ -3,6 +3,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Http;
 using mencoForWindows_winui3.Clients;
+using System.Text.Encodings.Web;
+using System.Text.Json;
 
 namespace mencoForWindows_winui3.Service
 {
@@ -17,8 +19,8 @@ namespace mencoForWindows_winui3.Service
             if (!_isInitialized)
             {
                 var sc = new ServiceCollection();
-                //TODO: 增加service配置
                 ConfigureHttpClient(sc);
+                ConfigureServices(sc);
                 _serviceProvider = sc.BuildServiceProvider();
                 _isInitialized = true;
             }
@@ -35,7 +37,14 @@ namespace mencoForWindows_winui3.Service
             sc.AddHttpClient();
             sc.AddHttpClient<MencoClient>()
                 .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler{ AutomaticDecompression = System.Net.DecompressionMethods.All });
-            //TODO: new httpClient
+        }
+
+        private static void ConfigureServices(ServiceCollection sc)
+        {
+            sc.AddSingleton<LoginService>();
+            sc.AddSingleton<ImageService>();
+            // add more service here
+            sc.AddSingleton(new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping, PropertyNameCaseInsensitive = true });
         }
 
         public static T? GetService<T>()

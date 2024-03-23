@@ -119,9 +119,9 @@ public class MencoClient
         return await CommonSendAsync<MencoSearchResultWrapper<SpacePostResultDataModel>>(request, cancellationToken);
     }
 
-    public async Task<byte[]> GetUserIconAsync([NotNull] string userIconUrl)
+    public async Task<byte[]> GetBytesImageAsync([NotNull] string url)
     {
-        var request = new HttpRequestMessage(HttpMethod.Get, userIconUrl);
+        var request = new HttpRequestMessage(HttpMethod.Get, url);
         var result = await CommonSendByteAsync(request);
         if (result.LongLength == 0) throw new ApiException(10001, "网络请求错误！");
         return result;

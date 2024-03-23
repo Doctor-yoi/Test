@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="mencoForWindows_winui3.Pages.SettingPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:mencoForWindows_winui3.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:communityToolkit="using:CommunityToolkit.WinUI.Controls"
+    xmlns:viewModels="using:mencoForWindows_winui3.ViewModels"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    d:DataContext="{d:DesignInstance Type=viewModels:SettingPageViewModel}"
+    mc:Ignorable="d">
+    <Page.DataContext>
+        <viewModels:SettingPageViewModel x:Name="vm"/>
+    </Page.DataContext>
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="设置" FontSize="30" Margin="0,0,0,12"/>
+            <communityToolkit:SettingsCard x:Name="SettingPage_Logout" Header="当前账号" Margin="0,0,0,5"
+                                           Description="{Binding Logout_Description}" HeaderIcon="{ui:FontIcon Glyph=&#xE748;}">
+                <Button x:Name="Logout_Button" Content="退出登录">
+                    <Button.Flyout>
+                        <Flyout>
+                            <StackPanel>
+                                <TextBlock Style="{ThemeResource BaseTextBlockStyle}" Text="确定退出登录？" Margin="0,0,0,12" />
+                                <Button Click="Logout_Button_Clicked" Content="确定" />
+                            </StackPanel>
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
+            </communityToolkit:SettingsCard>
+            <communityToolkit:SettingsExpander x:Name="SettingPage_Infomation" Header="Menco For Windows" Description="© 2024. All rights reserved."
+                                           Margin="0,0,0,5" HeaderIcon="{ui:FontIcon Glyph=&#xE946;}">
+                <communityToolkit:SettingsExpander.Items>
+                    <communityToolkit:SettingsCard Header="Developer: Github@Doctor-yoi(yoimiya0621@naganohara.top)"/>
+                    <communityToolkit:SettingsCard>
+                        <communityToolkit:SettingsCard.Header>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock Text="Repository: " Style="{ThemeResource BaseTextBlockStyle}" VerticalAlignment="Center"/>
+                                <HyperlinkButton NavigateUri="https://github.com/Doctor-yoi/MencoForWindows" 
+                                                 Content="https://github.com/Doctor-yoi/MencoForWindows"/>
+                            </StackPanel>
+                        </communityToolkit:SettingsCard.Header>
+                    </communityToolkit:SettingsCard>
+                </communityToolkit:SettingsExpander.Items>
+            </communityToolkit:SettingsExpander>
+        </StackPanel>
+    </Grid>
+</Page>

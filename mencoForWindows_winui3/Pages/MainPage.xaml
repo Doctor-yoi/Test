@@ -15,7 +15,7 @@
     <Grid>
         <StackPanel>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                <Image x:Name="UserIcon" Height="50" Width="50" VerticalAlignment="Center" Source="{Binding userIconImage}"/>
+                <PersonPicture x:Name="UserIcon" Height="60" Width="60" VerticalAlignment="Center" ProfilePicture="{Binding userIconImage}"/>
                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                     <TextBlock x:Name="UserName" Text="{Binding userInfo.userFullName}" FontSize="25" Margin="12,0,0,5"/>
                     <TextBlock x:Name="UserFullName" Text="{Binding userInfo.userName}" FontSize="15" Margin="12,0,0,0"/>
