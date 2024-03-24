@@ -17,10 +17,10 @@
                 <Image Source="ms-appx:///Images/CompanyIcon.png" Height="30" Width="Auto" HorizontalAlignment="Left" Margin="8,0,0,0"/>
             </NavigationView.PaneHeader>
             <Border Margin="5,50,5,5" BorderBrush="{ThemeResource CircleElevationBorderBrush}" BorderThickness="0.8" CornerRadius="6.28" Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}">
-                <Frame x:Name="mainFrame" Margin="12,8,12,12"/>
+                <Frame x:Name="mainFrame" Margin="12,8,12,12" CacheSize="5"/>
             </Border>
             <NavigationView.MenuItems>
-                <NavigationViewItem Tag="MainPage" Content="主页">
+                <NavigationViewItem Tag="MainPage" Content="主页" >
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xE80F;"/>
                     </NavigationViewItem.Icon>

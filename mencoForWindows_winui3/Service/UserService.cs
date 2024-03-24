@@ -6,15 +6,16 @@ using System.Text;
 using System.Threading.Tasks;
 
 using mencoForWindows_winui3.Clients;
+using mencoForWindows_winui3.Converter;
 using mencoForWindows_winui3.Models;
 
 namespace mencoForWindows_winui3.Service
 {
-    public class LoginService
+    public class UserService
     {
         private MencoClient _mencoClient;
 
-        public LoginService(MencoClient? mencoClient)
+        public UserService(MencoClient? mencoClient)
         {
             this._mencoClient = mencoClient;
         }
@@ -22,7 +23,13 @@ namespace mencoForWindows_winui3.Service
         public async Task<UserInfo> GetUserInfoAsync(string userName, string password)
         {
             var userData = await _mencoClient.GetUserDataAsync(userName, password);
-            return new UserInfo(userData.UserId, userData.UserName, userData.FullName, userData.Token, userData.Avatar.Regular);
+            return UserDataModelToUserInfoConverter.Convert(userData);
+        }
+
+        public async Task<List<SpaceInfo>> GetUserJoindSpaceInfoAsync(UserInfo userinfo)
+        {
+            var joinedSpace = await _mencoClient.GetUserJoinedSpacesDataAsync(userinfo.userId, userinfo.userToken);
+            return WrappedSpaceInfoDataModelToSpaceInfoListConverter.Convert(joinedSpace);
         }
 
         public async Task<byte[]> GetUserIconAsync(string userIconUrl)

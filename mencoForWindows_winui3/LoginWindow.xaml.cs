@@ -18,7 +18,7 @@ namespace mencoForWindows_winui3
     /// </summary>
     public sealed partial class LoginWindow : Window
     {
-        private LoginService _loginService;
+        private UserService _loginService;
         private SystemBackdrop _backdropHelper;
         public LoginWindow()
         {
@@ -34,7 +34,7 @@ namespace mencoForWindows_winui3
             _backdropHelper.TrySetAcrylic(true);
             SetTitleBar(AppTitleBar);
 
-            this._loginService = ServiceManager.GetService<LoginService>();
+            this._loginService = ServiceManager.GetService<UserService>();
         }
         private void LoginWindow_CheckBox_IsShowPassword_Change(object sender, RoutedEventArgs e)
         {

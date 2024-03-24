@@ -36,7 +36,7 @@ namespace mencoForWindows_winui3.DataModels.SpaceData.SpacePostData
 		/// 
 		/// </summary>
 		[JsonPropertyName("moderated")]
-		public string Moderated { get;set; }
+		public object Moderated { get;set; }
 
 		/// <summary>
 		/// 我的乐园
@@ -60,7 +60,7 @@ namespace mencoForWindows_winui3.DataModels.SpaceData.SpacePostData
 		/// 
 		/// </summary>
 		[JsonPropertyName("updatedAt")]
-		public string UpdatedAt { get; set; }
+		public long UpdatedAt { get; set; }
 
 		/// <summary>
 		/// 
@@ -108,7 +108,7 @@ namespace mencoForWindows_winui3.DataModels.SpaceData.SpacePostData
 		/// 
 		/// </summary>
 		[JsonPropertyName("featured")]
-		public bool Featured { get;set; }
+		public object Featured { get;set; }
 
 		/// <summary>
 		/// 

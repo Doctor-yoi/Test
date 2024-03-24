@@ -17,6 +17,7 @@ namespace mencoForWindows_winui3
     public sealed partial class MainWindow : Window
     {
         private SystemBackdrop backdropHelper;
+
         public MainWindow()
         {
             this.InitializeComponent();
@@ -52,6 +53,7 @@ namespace mencoForWindows_winui3
                     mainFrame.Navigate(typeof(MainPage));
                     return;
                 case "PostPage":
+                    mainFrame.Navigate(typeof(PostPage));
                     return;
                 case "DiscussionPage":
                     return;

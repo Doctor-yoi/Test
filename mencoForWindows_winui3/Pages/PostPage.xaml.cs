@@ -1,17 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading.Tasks;
-
-using CommunityToolkit.Mvvm.ComponentModel;
-
-using mencoForWindows_winui3.Models;
-using mencoForWindows_winui3.Service;
-using mencoForWindows_winui3.Utils;
-using mencoForWindows_winui3.ViewModels;
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -29,18 +20,27 @@ using Windows.Foundation.Collections;
 
 namespace mencoForWindows_winui3.Pages
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class PostPage : Page
     {
-        private UserService _loginService;
-
-        public MainPage()
+        public PostPage()
         {
-            this._loginService = ServiceManager.GetService<UserService>();
             this.InitializeComponent();
             vm.Init();
+        }
+
+        private void ContentSettings_FontSize_Slider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            vm.fontSize = (int)e.NewValue;
+        }
+
+        private void PipsPager_SelectedIndexChanged(PipsPager sender, PipsPagerSelectedIndexChangedEventArgs args)
+        {
+            vm.ChangePage(sender.SelectedPageIndex);
+        }
+
+        private void PostPage_PostCardList_Loaded(object sender, RoutedEventArgs e)
+        {
+            vm.LoadPostCardList();
         }
     }
 }

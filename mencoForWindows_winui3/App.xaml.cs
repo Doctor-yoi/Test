@@ -31,7 +31,7 @@ namespace mencoForWindows_winui3
     /// </summary>
     public partial class App : Application
     {
-        private LoginService _loginService;
+        private UserService _loginService;
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -43,7 +43,7 @@ namespace mencoForWindows_winui3
             AppSetting.SetValue<string>("loginId", null);
             AppSetting.SetValue<string>("password", null);
 #endif
-            _loginService = ServiceManager.GetService<LoginService>();
+            _loginService = ServiceManager.GetService<UserService>();
             this.InitializeComponent();
         }
 

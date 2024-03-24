@@ -98,16 +98,11 @@ namespace mencoForWindows_winui3.DataModels.SpaceData.SpacePostData
 		[JsonPropertyName("size")]
 		public int Size { get;set; }
 
-		private string _CreatedAt;
 		/// <summary>
 		/// 
 		/// </summary>
 		[JsonPropertyName("createdAt")]
-		public string CreatedAt
-		{
-			get => _CreatedAt;
-			set => _CreatedAt = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1)).AddSeconds(long.Parse(value)).ToString();
-        }
+		public long CreatedAt { get; set; }
 
 		/// <summary>
 		/// 

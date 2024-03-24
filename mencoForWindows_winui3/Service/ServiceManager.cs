@@ -41,7 +41,7 @@ namespace mencoForWindows_winui3.Service
 
         private static void ConfigureServices(ServiceCollection sc)
         {
-            sc.AddSingleton<LoginService>();
+            sc.AddSingleton<UserService>();
             sc.AddSingleton<ImageService>();
             // add more service here
             sc.AddSingleton(new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping, PropertyNameCaseInsensitive = true });
