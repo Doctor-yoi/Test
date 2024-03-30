@@ -3,6 +3,7 @@ using Microsoft.UI.Composition.SystemBackdrops;
 using Microsoft.UI.Xaml;
 
 using System;
+using System.ComponentModel;
 using System.Net;
 using System.Runtime.InteropServices;
 
@@ -12,6 +13,7 @@ using WinRT;
 
 namespace mencoForWindows_winui3.Helpers;
 
+[Description("Copy from https://github.com/xunkong/xunkong \n Thanks Scgihost")]
 public class SystemBackdrop
 {
 

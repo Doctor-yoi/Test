@@ -17,7 +17,7 @@ using Microsoft.UI.Xaml.Media.Imaging;
 
 namespace mencoForWindows_winui3.ViewModels
 {
-    public partial class MainPageViewModel : INotifyPropertyChanged
+    public class MainPageViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

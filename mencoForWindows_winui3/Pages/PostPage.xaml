@@ -57,33 +57,7 @@
             <ColumnDefinition Width="300"/>
         </Grid.ColumnDefinitions>
         <StackPanel x:Name="PostPage_ContentSettings" Grid.Column="1" HorizontalAlignment="Right" Margin="8,0,0,0" MinWidth="292">
-            <communityToolkit:SettingsCard x:Name="ContentSettings_CurrentSpace" Margin="0,0,0,5" MinWidth="292"
-                                           Header="教室" HeaderIcon="{ui:FontIcon Glyph=&#xE7BE;}">
-                <ComboBox x:Name="ContentSettings_CurrentSpace_SelectComboBox" SelectedIndex="0"
-                          ItemsSource="{Binding spaceInfoCollection}" ItemTemplate="{CustomResource SpaceComboBoxItem}"/>
-            </communityToolkit:SettingsCard>
-            <communityToolkit:SettingsCard x:Name="ContentSettings_FontSize" Margin="0,0,0,5" MinWidth="292"
-                                           Header="文字大小" HeaderIcon="{ui:FontIcon}">
-                <Slider x:Name="ContentSettings_FontSize_Slider" ValueChanged="ContentSettings_FontSize_Slider_ValueChanged"/>
-            </communityToolkit:SettingsCard>
         </StackPanel>
-        <StackPanel x:Name="PostPage_MainContent" Grid.Column="0" HorizontalAlignment="Left">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="100"/>
-                </Grid.RowDefinitions>
-                <ListView x:Name="PostPage_PostCardList" Grid.Row="0" HorizontalAlignment="Stretch" Margin="0,0,0,5"
-                          ItemTemplate="{CustomResource PostCard}" ItemsSource="{Binding postContent}"
-                          Loaded="PostPage_PostCardList_Loaded"/>
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1">
-                    <Button Content="{Binding pageSelectedIndex}" IsEnabled="False" 
-                            HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <PipsPager x:Name="PostPage_ContentPageIndex" 
-                               Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"
-                               SelectedIndexChanged="PipsPager_SelectedIndexChanged"/>
-                </StackPanel>
-            </Grid>
-        </StackPanel>
+        
     </Grid>
 </Page>

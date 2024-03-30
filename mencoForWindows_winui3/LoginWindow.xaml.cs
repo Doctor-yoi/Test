@@ -13,6 +13,7 @@ using Microsoft.UI.Xaml.Controls;
 
 namespace mencoForWindows_winui3
 {
+    [Obsolete("Use Frame+Page Instead")]
     /// <summary>
     /// An empty window that can be used on its own or navigated to within a Frame.
     /// </summary>

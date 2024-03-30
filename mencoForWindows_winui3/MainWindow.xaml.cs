@@ -1,16 +1,23 @@
 using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 using mencoForWindows_winui3.Helpers;
+using mencoForWindows_winui3.Models;
 using mencoForWindows_winui3.Pages;
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media.Animation;
+
+using Windows.UI.ViewManagement;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace mencoForWindows_winui3
 {
+    [Description("Finished")]
     /// <summary>
     /// An empty window that can be used on its own or navigated to within a Frame.
     /// </summary>
@@ -21,46 +28,17 @@ namespace mencoForWindows_winui3
         public MainWindow()
         {
             this.InitializeComponent();
-            this.ExtendsContentIntoTitleBar = true;
-            this.Title = "ÃÅ¿ÚÑ§Ï°Íø";
-            SetTitleBar(AppTitleBar);
 
             this.backdropHelper = new SystemBackdrop(this);
-            backdropHelper.TrySetAcrylic(true);
+            backdropHelper.TrySetAcrylic(false);
 
-            mainFrame.Navigate(typeof(MainPage));
+            NotificationHelper.Initialize(NotificationBar);
+            NavigateHelper.InitAppRootFrame(rootFrame);
+            NavigateHelper.Navigate(typeof(LoginPage), "App");
         }
-
-        private void NavigationView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
+        public string GetAppTitleFromSystem()
         {
-            if (mainFrame.CanGoBack)
-            {
-                mainFrame.GoBack();
-            }
-        }
-
-        private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
-        {
-            if (args.IsSettingsSelected)
-            {
-                mainFrame.Navigate(typeof(SettingPage));
-                return;
-            }
-            var selectedItem = (NavigationViewItem)args.SelectedItem;
-            switch (selectedItem.Tag)
-            {
-                case "MainPage":
-                    mainFrame.Navigate(typeof(MainPage));
-                    return;
-                case "PostPage":
-                    mainFrame.Navigate(typeof(PostPage));
-                    return;
-                case "DiscussionPage":
-                    return;
-                case "PersonalNotesPage":
-                    return;
-            }
-
+            return Windows.ApplicationModel.Package.Current.DisplayName;
         }
     }
 }

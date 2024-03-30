@@ -84,38 +84,20 @@ namespace mencoForWindows_winui3.ViewModels
             this._fontSize = 20;
             this._postContent = new List<PostContent>();
             this._pageSelectedIndex = 1;
-#if DEBUG
-            PostContent test = new PostContent();
-            
-#endif
         }
 
         public async void Init()
         {
-            var spaceInfoList = await _userService.GetUserJoindSpaceInfoAsync(GlobalData.userInfo);
-            if (spaceInfoList.Count < 1)
-            {
-                spaceInfoCollection.Add(new SpaceInfo(null, "未加入教室", null, null));
-                return;
-            }
-            foreach (var space in spaceInfoList)
-            {
-                spaceInfoCollection.Add(space);
-            }
-            postContent = await _postService.GetPostContentsAsync(GlobalData.userInfo, new SpaceInfo("5f47c6ee1a8ae2d44f912c55", null, null, null), 0);
+            
         }
 
         public async void ChangePage(int index)
         {
-            pageSelectedIndex = index + 1;
 
-            postContent = new List<PostContent>();
-            //获取新post内容
         }
 
         public async void LoadPostCardList()
         {
-            int offset = pageSelectedIndex * 10;
             
         }
 

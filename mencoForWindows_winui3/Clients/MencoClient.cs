@@ -59,7 +59,7 @@ public class MencoClient
                 return await response.Content.ReadFromJsonAsync<T>();
             case HttpStatusCode.Conflict:
                 Dictionary<string, JsonArray> ErspData = await response.Content.ReadFromJsonAsync<Dictionary<string, JsonArray>>();
-                JsonArray errorMessageList = ErspData.ContainsKey("LoginId") ? (JsonArray)ErspData["LoginId"] : (JsonArray)ErspData["password"];
+                JsonArray errorMessageList = ErspData.ContainsKey("loginId") ? (JsonArray)ErspData["loginId"] : (JsonArray)ErspData["password"];
                 throw new ApiException(409, errorMessageList[0].ToString());
             case HttpStatusCode.InternalServerError:
                 Dictionary<string, string> eMessageData = await response.Content.ReadFromJsonAsync<Dictionary<string, string>>();

@@ -6,6 +6,7 @@ using Windows.Storage;
 
 namespace mencoForWindows_winui3.Helpers
 {
+    [Description("Finished")]
     public static class AppSetting{
         private static readonly ApplicationDataContainer _appDataContainer;
 

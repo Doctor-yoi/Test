@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="mencoForWindows_winui3.Pages.NavigationPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:mencoForWindows_winui3.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Grid>
+        <NavigationView
+                    x:Name="RootNavigator"
+                    IsBackEnabled="True"
+                    BackRequested="RootNavigator_BackRequested"
+                    SelectionChanged="RootNavigator_SelectionChanged"
+                    IsSettingsVisible="True"
+                    PaneDisplayMode="Left"
+                    IsTitleBarAutoPaddingEnabled="False"
+                    >
+            <Border Margin="5,50,5,5" BorderBrush="{ThemeResource CircleElevationBorderBrush}" BorderThickness="0.8" CornerRadius="6.28" Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}">
+                <Frame x:Name="mainFrame" Margin="12,8,12,12" CacheSize="5"/>
+            </Border>
+            <NavigationView.MenuItems>
+                <NavigationViewItem Tag="PostPage" Content="公告">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE7BC;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Tag="DiscussionPage" Content="讨论">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE8BD;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Tag="PersonalNotesPage" Content="个人笔记">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE70B;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+            </NavigationView.MenuItems>
+            <NavigationView.FooterMenuItems>
+                <NavigationViewItem Tag="SwitchSpace">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE748;"/>
+                    </NavigationViewItem.Icon>
+                    <NavigationViewItem.Content>
+                        <Button Content="测试" HorizontalAlignment="Right"/>
+                    </NavigationViewItem.Content>
+                </NavigationViewItem>
+            </NavigationView.FooterMenuItems>
+        </NavigationView>
+    </Grid>
+</Page>
