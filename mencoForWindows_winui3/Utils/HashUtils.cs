@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
+﻿using System.IO.Hashing;
 using System.Text;
-using System.Threading.Tasks;
-using System.IO.Hashing;
 
 namespace mencoForWindows_winui3.Utils
 {

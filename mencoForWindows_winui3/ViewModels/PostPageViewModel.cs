@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using mencoForWindows_winui3.Models;
 using mencoForWindows_winui3.Service;
@@ -53,7 +49,7 @@ namespace mencoForWindows_winui3.ViewModels
             get => _postContent;
             set
             {
-                if(_postContent != value)
+                if (_postContent != value)
                 {
                     _postContent = value;
                     OnPropertyChanged();
@@ -67,7 +63,7 @@ namespace mencoForWindows_winui3.ViewModels
             get => _pageSelectedIndex;
             set
             {
-                if(_pageSelectedIndex != value)
+                if (_pageSelectedIndex != value)
                 {
                     _pageSelectedIndex = value;
                     OnPropertyChanged();
@@ -88,7 +84,7 @@ namespace mencoForWindows_winui3.ViewModels
 
         public async void Init()
         {
-            
+
         }
 
         public async void ChangePage(int index)
@@ -98,7 +94,7 @@ namespace mencoForWindows_winui3.ViewModels
 
         public async void LoadPostCardList()
         {
-            
+
         }
 
         public void OnPropertyChanged(string name = "") =>

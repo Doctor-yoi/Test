@@ -59,7 +59,7 @@ namespace mencoForWindows_winui3.Pages
             LoginProgress.Visibility = Visibility.Visible;
             string loginId = LoginId.Text;
             string password = Password.Password;
-            if(await vm.login(loginId, password))
+            if (await vm.login(loginId, password))
             {
                 NavigateHelper.Navigate(typeof(NavigationPage), "App");
                 return;

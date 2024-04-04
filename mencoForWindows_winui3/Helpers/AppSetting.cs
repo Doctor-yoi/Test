@@ -1,16 +1,16 @@
-using System;
 using System.ComponentModel;
-using System.Xml.Linq;
 
 using Windows.Storage;
 
 namespace mencoForWindows_winui3.Helpers
 {
     [Description("Finished")]
-    public static class AppSetting{
+    public static class AppSetting
+    {
         private static readonly ApplicationDataContainer _appDataContainer;
 
-        static AppSetting(){
+        static AppSetting()
+        {
             _appDataContainer = ApplicationData.Current.LocalSettings;
         }
 
@@ -29,7 +29,8 @@ namespace mencoForWindows_winui3.Helpers
             catch { }
         }
 
-        public static T? GetValue<T>(string key, T? defaultValue = default){
+        public static T? GetValue<T>(string key, T? defaultValue = default)
+        {
             T? value;
             if (TryGetValue<T>(key, out value, defaultValue))
             {
@@ -41,11 +42,13 @@ namespace mencoForWindows_winui3.Helpers
             }
         }
 
-        public static bool TryGetValue<T>(string key, out T? result, T? defaultValue = default){
+        public static bool TryGetValue<T>(string key, out T? result, T? defaultValue = default)
+        {
             try
             {
                 var value = _appDataContainer.Values[key];
-                if (value is T){
+                if (value is T)
+                {
                     result = (T)value;
                     return true;
                 }

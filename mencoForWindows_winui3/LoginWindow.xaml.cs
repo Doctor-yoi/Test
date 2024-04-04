@@ -57,9 +57,9 @@ namespace mencoForWindows_winui3
                 mainWindow.Activate();
                 this.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                if(ex is ApiException)
+                if (ex is ApiException)
                 {
                     ex = (ApiException)ex;
                     InfoBar errorInfo = new InfoBar();

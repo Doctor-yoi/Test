@@ -23,8 +23,8 @@ namespace mencoForWindows_winui3.Pages
         {
             this.InitializeComponent();
         }
-        
-        private void Logout_Button_Clicked(object sendet,RoutedEventArgs args)
+
+        private void Logout_Button_Clicked(object sendet, RoutedEventArgs args)
         {
             vm.Logout();
         }

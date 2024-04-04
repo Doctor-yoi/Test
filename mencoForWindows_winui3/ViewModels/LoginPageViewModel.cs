@@ -55,7 +55,7 @@ namespace mencoForWindows_winui3.ViewModels
                 NotificationHelper.Success("登录成功");
                 return true;
             }
-            catch(ApiException apiEx)
+            catch (ApiException apiEx)
             {
                 if (apiEx.returnStatusCode == 409)
                 {
@@ -65,7 +65,7 @@ namespace mencoForWindows_winui3.ViewModels
                 NotificationHelper.Error("服务器内部错误");
                 return false;
             }
-            
+
         }
 
         public void OnPropertyChanged(string name = "") =>

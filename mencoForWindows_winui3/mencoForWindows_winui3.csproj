@@ -1,16 +1,33 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <LangVersion>11.0</LangVersion>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
-    <RootNamespace>mencoForWindows_winui3</RootNamespace>
+    <RootNamespace>MencoForWindows_winui3</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <Platforms>x86;x64;ARM64</Platforms>
-    <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
+    <Platforms>x86;x64</Platforms>
+    <RuntimeIdentifiers>win10-x86;win10-x64</RuntimeIdentifiers>
+    <PublishProfile>win10-$(Platform).pubxml</PublishProfile>
     <UseWinUI>true</UseWinUI>
-    <LangVersion>11.0</LangVersion>
-    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <EnableMsixTooling>true</EnableMsixTooling>
+    <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
+    <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+    <PackageCertificateKeyFile>MencoForWindows_winui3_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
+    <GenerateTestArtifacts>True</GenerateTestArtifacts>
+    <AppxBundle>Auto</AppxBundle>
+    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
+    <AppInstallerUri>J:\source\MencoForWindows_winui3\package\release</AppInstallerUri>
+    <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
+    <DefaultLanguage>zh-Hans</DefaultLanguage>
   </PropertyGroup>
+  <ItemGroup>
+    <Content Remove="Assets\Square44x44Logo.altform-unplated_targetsize-24.png" />
+    <Content Remove="Assets\Square44x44Logo.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Remove="LoginWindow.xaml" />
     <None Remove="Pages\LoginPage.xaml" />
@@ -33,6 +50,24 @@
     <PackageReference Include="System.IO.Hashing" Version="8.0.0" />
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
+
+  <!-- 
+    Defining the "Msix" ProjectCapability here allows the Single-project MSIX Packaging
+    Tools extension to be activated for this project even if the Windows App SDK Nuget
+    package has not yet been restored.
+  -->
+  <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
+    <ProjectCapability Include="Msix" />
+  </ItemGroup>
+
+  <!-- 
+    Defining the "HasPackageAndPublishMenuAddedByProject" property here allows the Solution 
+    Explorer "Package and Publish" context menu entry to be enabled for this project even if 
+    the Windows App SDK Nuget package has not yet been restored.
+  -->
+  <PropertyGroup Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
+    <HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
+  </PropertyGroup>
 
   <ItemGroup>
     <Page Update="Pages\TestPage.xaml">

@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace mencoForWindows_winui3.DataModels;
 
-public class MencoSearchResultWrapper<T> where T : class {
+public class MencoSearchResultWrapper<T> where T : class
+{
     [JsonPropertyName("results")]
     public List<T> Results { get; set; }
 

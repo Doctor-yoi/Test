@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-
-using CommunityToolkit.Mvvm.Input;
+﻿using System.ComponentModel;
 
 using mencoForWindows_winui3.Models;
 using mencoForWindows_winui3.Service;
-using mencoForWindows_winui3.Utils;
 
 using Microsoft.UI.Xaml.Media.Imaging;
 
@@ -60,10 +50,10 @@ namespace mencoForWindows_winui3.ViewModels
             this._test = ServiceManager.GetService<PostService>();
         }
 
-        public void OnPropertyChanged(string name = "") => 
+        public void OnPropertyChanged(string name = "") =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 
-        
+
         public async void Init()
         {
             this.userInfo = GlobalData.userInfo;

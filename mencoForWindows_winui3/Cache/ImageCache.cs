@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 using mencoForWindows_winui3.Utils;
 
@@ -29,7 +25,7 @@ namespace mencoForWindows_winui3.Cache
             _iniatialized = true;
         }
 
-        public static void Add(string originalKey,BitmapImage value)
+        public static void Add(string originalKey, BitmapImage value)
         {
             if (!_iniatialized)
             {

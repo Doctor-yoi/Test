@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Json;
-using System.Text;
-using System.Text.Json;
 using System.Text.Json.Nodes;
-using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
+
 using mencoForWindows_winui3.DataModels;
 using mencoForWindows_winui3.DataModels.SpaceData;
 using mencoForWindows_winui3.DataModels.SpaceData.SpacePostData;
@@ -110,7 +106,7 @@ public class MencoClient
     }
 
     public async Task<MencoSearchResultWrapper<SpacePostResultDataModel>> GetSpacePostDataAsync([NotNull] string userId, [NotNull] string userToken,
-        [NotNull] string spaceId, string? postType = "announcement", int? offset = 0,CancellationToken? cancellationToken = null)
+        [NotNull] string spaceId, string? postType = "announcement", int? offset = 0, CancellationToken? cancellationToken = null)
     {
         string reqUrl = $"http://menco.cn/api/spaces/{spaceId}/posts?filter={postType}&offset={offset}";
         var request = new HttpRequestMessage(HttpMethod.Get, reqUrl);

@@ -23,9 +23,9 @@ namespace mencoForWindows_winui3.Helpers
             _cleanTimer.Start();
         }
 
-        private static void _time_elapsed(object? sender,ElapsedEventArgs args)
+        private static void _time_elapsed(object? sender, ElapsedEventArgs args)
         {
-            if(_container is null)
+            if (_container is null)
             {
                 return;
             }

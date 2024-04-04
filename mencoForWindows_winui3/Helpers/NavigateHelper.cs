@@ -22,7 +22,7 @@ namespace mencoForWindows_winui3.Helpers
             NavigatorRootFrame = frame;
         }
 
-        public static void Navigate(Type page,string frameType)
+        public static void Navigate(Type page, string frameType)
         {
             switch (frameType)
             {

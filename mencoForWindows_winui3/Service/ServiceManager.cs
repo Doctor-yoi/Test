@@ -1,10 +1,11 @@
 ﻿using System.Net.Http;
+using System.Text.Encodings.Web;
+using System.Text.Json;
+
+using mencoForWindows_winui3.Clients;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Http;
-using mencoForWindows_winui3.Clients;
-using System.Text.Encodings.Web;
-using System.Text.Json;
 
 namespace mencoForWindows_winui3.Service
 {
@@ -28,15 +29,17 @@ namespace mencoForWindows_winui3.Service
 
         private static void ConfigureHttpClient(ServiceCollection sc)
         {
-            sc.Configure<HttpClientFactoryOptions>(options => {
-                options.HttpMessageHandlerBuilderActions.Add(builder => 
-                    builder.PrimaryHandler = new HttpClientHandler{
+            sc.Configure<HttpClientFactoryOptions>(options =>
+            {
+                options.HttpMessageHandlerBuilderActions.Add(builder =>
+                    builder.PrimaryHandler = new HttpClientHandler
+                    {
                         AutomaticDecompression = System.Net.DecompressionMethods.All
                     });
             });
             sc.AddHttpClient();
             sc.AddHttpClient<MencoClient>()
-                .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler{ AutomaticDecompression = System.Net.DecompressionMethods.All });
+                .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler { AutomaticDecompression = System.Net.DecompressionMethods.All });
         }
 
         private static void ConfigureServices(ServiceCollection sc)

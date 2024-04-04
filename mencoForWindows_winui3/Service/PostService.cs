@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
 using mencoForWindows_winui3.Clients;
@@ -22,10 +19,10 @@ namespace mencoForWindows_winui3.Service
             this._imageService = ServiceManager.GetService<ImageService>();
         }
 
-        public async Task<List<PostContent>> GetPostContentsAsync(UserInfo userInfo,SpaceInfo currentSpace,int offset)
+        public async Task<List<PostContent>> GetPostContentsAsync(UserInfo userInfo, SpaceInfo currentSpace, int offset)
         {
-            var searchResult = await _mencoClient.GetSpacePostDataAsync(userInfo.userId, userInfo.userToken, 
-                currentSpace.spaceId, "announcement", 
+            var searchResult = await _mencoClient.GetSpacePostDataAsync(userInfo.userId, userInfo.userToken,
+                currentSpace.spaceId, "announcement",
                 offset);
             if (searchResult.Results.Count < 1)
             {

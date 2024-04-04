@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "MencoForWindows_winui3 (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "MencoForWindows_winui3 (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
